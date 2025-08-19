@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:gwdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+
+# For prod, set a profile and use Postgres:
+# spring:
+#   datasource:
+#     url: jdbc:postgresql://localhost:5432/goalwise
+#     username: goalwise
+#     password: secret
+#   jpa:
+#     hibernate:
+#       ddl-auto: update
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-256-bit-secret-string-change-me-change-me}
+    ttlMinutes: 60
+
+vonage:
+  apiKey: ${VONAGE_API_KEY:demo_key}
+  apiSecret: ${VONAGE_API_SECRET:demo_secret}
+  brand: "Goalwise"
+  baseUrl: "https://api.nexmo.com"
